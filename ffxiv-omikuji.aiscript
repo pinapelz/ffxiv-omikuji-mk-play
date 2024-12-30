@@ -1,0 +1,387 @@
+let CATEGORIES = 5
+let LUCK_TIERS = [{
+  TIER: 'Great Fortune',
+  DESCRIPTION: 'Thou shalt experience extraordinary fortune. Keep these words of guidance in thy heart',
+  ADVENTURE: [
+    "Wander wither the winds take thee",
+    "Seek out sights thou has yet to behold",
+    "Travel to lands held dear in thy heart",
+    "Thou shalt be blessed by the weather",
+    "Auspicious encounters await amidst the hustle and bustle of cities"
+  ],
+  RELATIONSHIPS: [
+    "Answer the call, and trust and honor accorded to heroes shall be thine",
+    "Cast thy gaze upon bonds eternal, for therein lie great blessings",
+    "To thy companions thou shalt be indebted. Forget not to express thine appreciation",
+    "A star-guided companion is closer than thou knowest",
+    "Fortunate are those who do not stray from their friends"
+  ],
+  PROSPERITY: [
+    "Cast aside thy greed, and thou shalt reap the spoils of numbers great",
+    "Upon thee luck shall smile. Seek riches in gilded halls",
+    "A treasure map thou shouldst unfurl. Unto great fortune it shall lead thee",
+    "All shall be to thy desire. Throw open coffers without fear",
+    "Profit shall come. Be honest in thy business dealings"
+  ],
+  CONFLICT: [
+    "Take to battle with confidence. Each mighty foe shall see thee grow",
+    "Beyond repetition lieth truth. Neglect not thy training",
+    "Look to thy comrades-in-arms. Much have they to teach thee",
+    "Great opportunities for growth lie in fields yet unexplored",
+    "Beyond repetition lieth truth. Neglect not thy training"
+  ],
+  FAVOR: [
+    "Be fierce like unto the Fury, and victory shall be assured thee",
+    "Be kind like unto the Lover, and thou shalt receive kindness in return",
+    "Be passionate like unto the Warden, and the way shall be illuminated for thee",
+    "Be decisive like unto the Navigator, and serendipitous winds shall bear thee high",
+    "Be inquisitive like unto the Wanderer, and thou shalt find much joy in thy journeys"
+  ]
+}, {
+  TIER: 'Good Fortune',
+  DESCRIPTION: 'Thou shalt experience exceptional fortune. Keep these words of guidance in thy heart',
+  ADVENTURE: [
+    "Hither and thither wander alone. Enjoy moments of respite all thine own",
+    "Embark upon an old journey anew. Further discoveries await",
+    "Participate in festivities and feel the turning of the seasons",
+    "Heed the voices of the people, for they have tales untold to share",
+    "Unexpected discoveries await in unexplored lands"
+  ],
+  RELATIONSHIPS: [
+    "Be prepared for unexpected encounters",
+    "From an unlikely meeting a relationship shall bloom",
+    "Friendship will bloom. Take the lead and gather comrades",
+    "A friend shall come to thine aid. Neglect not to repay the debt",
+    "Though slow to ripen, the sweetest of fruits await"
+  ],
+  PROSPERITY: [
+    "Great riches await in gilded halls. Be open-handed",
+    "Sail forth and cast thy nets. A great haul awaits thee",
+    "Invest in thy home. From it fortune shall grow",
+    "Bid farewell to the old; bid welcome to the new",
+    "Stay alert to opportunity, and thou shalt make thy fortune"
+  ],
+  CONFLICT: [
+    "Temper thyself in the heat of friendly rivalries",
+    "Thy weapon suiteth thee well. Continue in thine efforts with confidence",
+    "The tiles favor thee. Try thy hand at mahjong",
+    "In the pursuit of fell fiends far and wide, thou shalt find good fortune",
+    "Thy weapon suiteth thee well. Continue in thine efforts with confidence"
+  ],
+  FAVOR: [
+    "Be wise like unto the Spinner, and fortune shall favor thee in all its domains",
+    "Be bold like unto the Destroyer, and all foes shall fall before thee",
+    "Be creative like unto the Builder, and a surer hand of craftsmanship shall be thine",
+    "Be discerning like unto the Traders, and no chance to profit shall pass thee by",
+    "Be forbearing like unto the Matron, and the seeds of new friendship shall quicken for thee"
+  ]
+}, {
+  TIER: 'Fair Fortune',
+  DESCRIPTION: 'Thou shalt experience moderate fortune. Keep these words of guidance in thy heart',
+  ADVENTURE: [
+    "Stay true to thyself, and the way shall open for thee",
+    "A case is afoot. Enlist the services of the most gentlemanly of inspectors",
+    "Look closely at the weave of the lands thou seest, and thou shalt make new discoveries",
+    "Gather thine allies, and embark upon a journey to remember",
+    "Place thyself in fate's hand, and thou wilt surely grow"
+  ],
+  RELATIONSHIPS: [
+    "Be ever grateful, and thou shalt know blessed friendship",
+    "Thy comrades are thy treasures. Cherish them well",
+    "From a foreign land cometh a kindred soul. Embrace them without reserve",
+    "Where words fail to convey thy feelings, gestures may yet succeed",
+    "Nothing good will come of waiting. Participate in a gathering hosted by adventurers"
+  ],
+  PROSPERITY: [
+    "Great success is the accumulation of small efforts. Neglect not thy daily chores",
+    "Now is an auspicious time to find a new home. Seize the opportunity",
+    "Great profits await reaping in the wilderness",
+    "A chance for profit shall come by way of a friend",
+    "Wealth lieth in the seas and skies. Send forth vessels to explore"
+  ],
+  CONFLICT: [
+    "Neglect not thy provisions, and victory shall be thine",
+    "A grueling battle awaiteth. Reassess thine equipment",
+    "Dwell not overmuch in sweet victory, or bitter defeat shall follow",
+    "For strength thou wantest not. Thou needest but breathe as one with thine allies"
+  ],
+  FAVOR: [
+    "Be steadfast like unto the Keeper, and thou shalt not be led astray",
+    "Be wise like unto the Scholar, and thou shalt find a way to overcome misfortune",
+    "Be resolute like unto the Fury, and thou shalt know no surrender",
+    "Be observant like unto the Lover, and thou shalt see all things for what they are",
+    "Be audacious like unto the Warden, and thy comrades shall follow thee true"
+  ]
+}, 
+{
+  TIER: 'Small Fortune',
+  DESCRIPTION: 'Thou shalt experience limited fortune. Keep these words of guidance in thy heart',
+  ADVENTURE: [
+    "Know thy destination before thou embarkest upon thy journey",
+    "Hearken to the pleas of those in need, no matter their race or creed",
+    "Seek fortune along the byway",
+    "Alone thou shalt struggle. Set forth with allies",
+    "Behold once more the first city thou didst see. There, good fortune awaiteth thee"
+  ],
+  RELATIONSHIPS: [
+    "Neglect not to stay in touch with loved ones, and all shall be well",
+    "A face from thy past shall appear. Rekindle thy friendship",
+    "There shall be a meeting long in the making. Abide in patience",
+    "Help those in need, and friendship shall bloom",
+    "Cherish the bonds with which thou art blessed, and strive to strengthen them"
+  ],
+  PROSPERITY: [
+    "Now is the time to sell. The longer thou waitest, the greater thy loss",
+    "Put thy belongings in order",
+    "If thou fearest not to lose, thou shalt stand to gain",
+    "Although it be at great expense, thou shalt obtain the object of thy desire",
+    "Thou shalt gain through the help of thy friends"
+  ],
+  CONFLICT: [
+    "Although thou shalt fall, thou shalt rise up stronger each time",
+    "Be not complacent. Remain vigilant from beginning to end",
+    "Cast aside idle thoughts, and focus wholly on that which requireth thine attention",
+    "Continue honing thyself with thine allies"
+  ],
+  FAVOR: [
+    "Be boisterous like unto the Navigator, and from fate's tides thou mayest yet break free",
+    "Be carefree like unto the Wanderer, and some few failures shall not discourage thee",
+    "Be farsighted like unto the Spinner, and thou shalt rise above the caprices of fortune",
+    "Be unyielding like unto the Destroyer, and thou shalt break through any hardship",
+    "Be dexterous like unto the Builder, and thy tools shall never fail thee"
+  ]
+},
+{
+  TIER: 'Misfortune',
+  DESCRIPTION: 'Thou shalt experience misfortune. Heed these words of guidance, and thy luck may change',
+  ADVENTURE: [
+    "Neglect not to lay plans",
+    "Thine excesses shall take their toll. Pay thy health due care on the road",
+    "Whiskered fish shall impede thy steps. Exercise due care",
+    "The way is clear. Forge on with a calm heart",
+    "The future holdeth disaster. Be as a light in the darkness to those around thee"
+  ],
+  RELATIONSHIPS: [
+    "An old friend may become a new flame. Handle the fires of passion with care",
+    "Thou shalt waver in the face of affection",
+    "Trust in thy comrades. Heed not gossip and hearsay",
+    "Forget not thy kindness in the midst of conflict",
+    "With sincerity shalt thou allay misunderstanding"
+  ],
+  PROSPERITY: [
+    "Act not with emotion, lest thou misjudge an item's worth",
+    "Games of chance do not favor thee. Abide in patience",
+    "Fret not over excess stock. It shall not go to waste",
+    "Good fortune awaiteth. Outfit thy retainers anew",
+    "Thy nets shall be empty. If thou wouldst catch fish, watch well the tides"
+  ],
+  CONFLICT: [
+    "Be magnanimous in thine encounters",
+    "Apprehension shall beget failure. Take to battle with naught save complete resolve",
+    "Victory must not be rushed. Allow it to come in due course",
+    "Even in victory, thy heart's desire shall elude thee. Perseverance is the key"
+  ],
+  FAVOR: [
+    "Like unto the Destroyer's bolt, misfortune may strike without warning. Be ever prepared",
+    "To defeat adversity as unassailable as the Fury's shield, thou must strike with resolve unwavering",
+    "To triumph over foes as ferocious as the Lover's loyal hound, thou must devise a stratagem",
+    "To rise above hardship as tumultuous as the Navigator's raging waves, thou must bide thy time",
+    "To resolve dilemmas as confounding as the Scholar's scrolls, thou must seek new wisdom"
+  ]
+}, {
+  TIER: 'Grave Misfortune',
+  DESCRIPTION: 'Thou shalt experience considerable misfortune. Heed these words of guidance, and thy luck may change',
+  ADVENTURE: [
+    "Thou shalt not be blessed with the weather. Abide in patience",
+    "Be alert lest a celebration pass thee by",
+    "Thou shalt be made to wait to sally forth. With apologies, pray abide in patience",
+    "Think upon thy daily conduct, lest thou be incarcerated",
+    "Beware the shooting star, for it bringeth destruction"
+  ],
+  RELATIONSHIPS: [
+    "Thou shalt hear from the object of thine affection. Choose well thy words",
+    "The flower is beyond thy reach. Seek it to thy sorrow",
+    "Pursue not deeply, lest thou be bogged in a mire",
+    "That which is said cannot be unsaid. Mind thy words",
+    "Thou standest at a precipice. Act in good faith"
+  ],
+  PROSPERITY: [
+    "The greater thy desire, the smaller the prize. Clear thy mind",
+    "A thief's map shall avail you not. Turn instead to that of thine allies",
+    "Seek not profit in gilded halls. Let the amusement be its own reward",
+    "The mightier the materia, the greater the risk. Purify thyself",
+    "Now is not the time to collect tomestones"
+  ],
+  CONFLICT: [
+    "A dull blade is quick to break. Hone thyself well",
+    "Cast aside idle thoughts, and focus wholly on that which requireth thine attention",
+    "Shouldst thou struggle to advance, look to a different path",
+    "In times of trial, allies must turn to each other for strength",
+    "A dull blade is quick to break. Hone thyself well"
+  ],
+  FAVOR: [
+    "Shouldst thou pursue forbidden love like unto the Spinner, thou shalt walk the path of destruction",
+    "Shouldst thou abide in duplicity like unto the Traders, thou shalt be lost to trust",
+    "Unless thou castest aside thine anger like unto the Matron, thou shalt know no respite from conflict",
+    "Unless thou embrace order like unto the Keeper, thy difficulties shall become graver still",
+    "Shouldst thou cling to thine audacity like unto the Warden, thou shalt scorch those around thee"
+  ]
+}]
+
+
+let random = Math:gen_rng(`{THIS_ID}{USER_ID}{Date:year()}{Date:month()}{Date:day()}`)
+let fortune_results = []
+for 5 {
+  fortune_results.push(random(0, (4)))
+}
+
+let fortune_tier = random(0, (LUCK_TIERS.len - 1))
+let tier = LUCK_TIERS[fortune_tier].TIER
+let tier_description = LUCK_TIERS[fortune_tier].DESCRIPTION
+let adventure = LUCK_TIERS[fortune_tier].ADVENTURE[fortune_results[0]]
+let relationships = LUCK_TIERS[fortune_tier].RELATIONSHIPS[fortune_results[1]]
+let prosperity = LUCK_TIERS[fortune_tier].PROSPERITY[fortune_results[2]]
+let conflict = LUCK_TIERS[fortune_tier].CONFLICT[fortune_results[3]]
+let favor = LUCK_TIERS[fortune_tier].FAVOR[fortune_results[4]]
+
+let fortune_lookout = fortune_tier <= 3
+var action_occured = false
+
+
+@tie_fortune(){
+  if action_occured {
+    return null
+  }
+	if fortune_lookout == false {
+		Mk:dialog(
+  		'You tie your fortune to the rack'
+  		'May the wind carry away your doubts, worries, and misfortunes'
+  		'information'
+		)
+	}
+	else {
+		Mk:dialog(
+			'You tie your fortune to the rack'
+			'Its blessings bound to your journey, carried forward by the winds of fate'
+			'information'
+		)
+	}
+	action_occured = true
+}
+
+@take_fortune() {
+  if action_occured {
+    return null
+  }
+  if fortune_lookout == false {
+    let take_anyway = Mk:confirm(
+      'The outlook of this fortune is negative',
+      'Do you wish to take the fortune with you regardless?',
+      'warning'
+    )
+    if !take_anyway {
+      return null
+    } else {
+      Mk:dialog(
+        'You take the fortune with you',
+        'A challenge accepted, to defy the fate it foretells',
+        'information'
+      )
+    }
+  } else {
+    Mk:dialog(
+      'You take the fortune with you',
+      'Its blessings a quiet comfort as you walk your chosen path',
+      'information'
+    )
+  }
+  action_occured = true
+}
+
+Ui:render([
+
+Ui:C:container({
+  align: 'center'
+  children: [
+    Ui:C:text({
+      text: tier
+      bold: true
+    }),
+    Ui:C:text({
+      text: tier_description
+    })
+  ]
+}),
+Ui:C:folder({
+  children: [
+    Ui:C:text({text: adventure})
+  ]
+  title: "Adventure" 
+  opened: false
+}),
+Ui:C:folder({
+  children: [
+    Ui:C:text({text: relationships})
+  ]
+  title: "Relationships" 
+  opened: false
+}),
+Ui:C:folder({
+  children: [
+    Ui:C:text({text: prosperity})
+  ]
+  title: "Prosperity" 
+  opened: false
+}),
+Ui:C:folder({
+  children: [
+    Ui:C:text({text: conflict})
+  ]
+  title: "Conflict" 
+  opened: false
+}),
+Ui:C:folder({
+  children: [
+    Ui:C:text({text: favor})
+  ]
+  title: "Favor" 
+  opened: false
+}),
+Ui:C:container({
+  align: 'center'
+  children: [
+    Ui:C:postFormButton({
+      text: "Share Results"
+      rounded: true
+      primary: true
+      form: {
+        text: `📜 Heavensturn Omikuji Result 📜
+
+__{tier}__
+
+**Adventure**: {adventure}
+
+**Relationships**: {relationships}
+
+**Prosperity**: {prosperity}
+
+**Conflict**: {conflict}
+
+**Favor**: {favor}
+
+Try it here: {Str:lf}{THIS_URL}
+`
+
+      }
+    }),
+    Ui:C:button({
+      text: "Take it with you"
+      onClick: take_fortune
+    }),
+    Ui:C:button({
+      text: "Tie it to the rack"
+      onClick: tie_fortune
+    })
+  ]
+})
+])
