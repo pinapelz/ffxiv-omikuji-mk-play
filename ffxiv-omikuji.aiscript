@@ -238,11 +238,12 @@ for 5 {
 let fortune_tier = random(0, (LUCK_TIERS.len - 1))
 let tier = LUCK_TIERS[fortune_tier].TIER
 let tier_description = LUCK_TIERS[fortune_tier].DESCRIPTION
-let adventure = LUCK_TIERS[fortune_tier].ADVENTURE[fortune_results[0]]
-let relationships = LUCK_TIERS[fortune_tier].RELATIONSHIPS[fortune_results[1]]
-let prosperity = LUCK_TIERS[fortune_tier].PROSPERITY[fortune_results[2]]
-let conflict = LUCK_TIERS[fortune_tier].CONFLICT[fortune_results[3]]
-let favor = LUCK_TIERS[fortune_tier].FAVOR[fortune_results[4]]
+
+let adventure = LUCK_TIERS[fortune_tier].ADVENTURE[Math:min(fortune_results[0], LUCK_TIERS[fortune_tier].ADVENTURE.len - 1)]
+let relationships = LUCK_TIERS[fortune_tier].RELATIONSHIPS[Math:min(fortune_results[1], LUCK_TIERS[fortune_tier].RELATIONSHIPS.len - 1)]
+let prosperity = LUCK_TIERS[fortune_tier].PROSPERITY[Math:min(fortune_results[2], LUCK_TIERS[fortune_tier].PROSPERITY.len - 1)]
+let conflict = LUCK_TIERS[fortune_tier].CONFLICT[Math:min(fortune_results[3], LUCK_TIERS[fortune_tier].CONFLICT.len - 1)]
+let favor = LUCK_TIERS[fortune_tier].FAVOR[Math:min(fortune_results[4], LUCK_TIERS[fortune_tier].FAVOR.len - 1)]
 
 let fortune_lookout = fortune_tier <= 3
 var action_occured = false
